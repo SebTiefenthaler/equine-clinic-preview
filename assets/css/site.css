@@ -144,7 +144,13 @@ img,video{display:block;max-width:100%}
   background:rgba(9,11,8,.42);backdrop-filter:blur(4px);white-space:nowrap}
 .reel-label.in{animation:labelIn .55s cubic-bezier(.16,1,.3,1)}
 @keyframes labelIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (max-width:640px){.reel-label{bottom:auto;top:16px;right:12px;font-size:10px;padding:5px 10px}}
+@media (max-width:640px){
+  /* label to the left, so it never sits on the Comp marker in the right corner */
+  .reel-label{bottom:auto;top:14px;right:auto;left:var(--gut);font-size:10px;padding:5px 10px}
+  /* on a phone the copy runs the full width, so the side-weighted scrim is not
+     enough over a busy frame: darken top to bottom as well */
+  .hero .scrim{background:linear-gradient(180deg,rgba(9,11,8,.55) 0%,rgba(9,11,8,.72) 45%,rgba(9,11,8,.86) 100%)}
+}
 
 /* ---------- stills in motion (Ken Burns) ---------- */
 .kb{position:absolute;inset:0;overflow:hidden;background:var(--sheet)}
